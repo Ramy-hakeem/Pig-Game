@@ -9,22 +9,20 @@ function getCurrentScoreElement(player) {
 function getScoreElement(player) {
   return document.querySelector(`#score--${player}`);
 }
+let activePlayer = 0;
+let currentScore = 0;
+let score = [0, 0];
 
 // dice
 const diceEl = document.querySelector('.dice');
+
 // buttons
 const roleBtn = document.querySelector('.btn--roll');
 const holdBtn = document.querySelector('.btn--hold');
 const newGameBtn = document.querySelector('.btn--new');
 
 // game data and itial data
-let activePlayer = Math.trunc(Math.random() * 2);
-let currentScore = 0;
-let score = [0, 0];
-getScoreElement(0).textContent = 0;
-getScoreElement(1).textContent = 0;
-diceEl.classList.add('hidden');
-getPlayerElement(activePlayer).classList.add('player--active');
+restGame();
 
 // handle the btns
 roleBtn.addEventListener('click', handleRole);
